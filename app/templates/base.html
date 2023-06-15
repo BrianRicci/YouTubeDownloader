@@ -13,9 +13,9 @@
 <body>
 
     <div class="container">
-        <header class="d-flex flex-wrap justify-content-between py-3 mb-4 border-bottom">
+        <!-- <header class="d-flex flex-wrap justify-content-between py-3 mb-4 border-bottom">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 md-auto link-body-emphasis text-decoration-none p-2">
-                <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="logo" class="logo">
+                <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="logo" class="logo me-2">
                 <span class="fs-4">YouTube Downloader</span>
             </a>
 
@@ -25,9 +25,34 @@
                 <li class="nav-item"><a href="/" class="nav-link">About</a></li>
             </ul>
 
-            <!-- ДОБАВИТЬ ПЕРЕКЛЮЧАТЕЛЬ НОЧНОГО И ДНЕВНОГО РЕЖИМА -->
-        </header>
-
+            <!-- ДОБАВИТЬ ПЕРЕКЛЮЧАТЕЛЬ НОЧНОГО И ДНЕВНОГО РЕЖИМА 
+        </header> -->
+        <nav class="navbar navbar-expand-lg py-3 mb-4 bg-body border-bottom">
+            <div class="container-fluid">
+                
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="logo" class="logo me-2">
+                <span>YouTube Downloader</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+              <div class="collapse navbar-collapse mx-auto" id="navbarSupportedContent">
+                <ul class="navbar-nav gap-2 align-items-center me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <button class="btn btn-outline-success p-0 px-2">
+                        <a class="nav-link active" aria-current="page" href="/">Download</a>
+                    </button>
+                </li>
+                  <li class="nav-item">
+                    <button class="btn btn-outline-info p-0 px-2">
+                        <a class="nav-link active" aria-current="page" href="/"">About</a>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
         {% block body %}{% endblock %}
 
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -39,8 +64,8 @@
             </div>
         
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <li class="ms-3"><a class="text-body-secondary" href="#"><img src="{{ url_for('static', filename='img/telegram_logo.svg') }}" alt="tg" class="bi" width="36" height="36"></a></li>
-                <li class="ms-3"><a class="text-body-secondary" href="#"><img src="{{ url_for('static', filename='img/vk_logo.svg') }}" alt="vk" class="bi" width="36" height="36"></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><img src="{{ url_for('static', filename='img/telegram_logo.svg') }}" alt="tg" class="bi logo" width="36" height="36"></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><img src="{{ url_for('static', filename='img/vk_logo.svg') }}" alt="vk" class="bi logo" width="36" height="36"></a></li>
             </ul>
         </footer>
       </div>

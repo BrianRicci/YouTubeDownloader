@@ -5,6 +5,22 @@
 {% endblock %}
 
 {% block body %}
-
+    <h2 class="text-center mb-3">Скачайте видео из YouTube в несколько кликов!</h2>
+    <div class="d-flex gap-1 w-75 mb-3 mx-auto">
+        <input type="text" class="form-control" id="urlInput" placeholder="https://www.youtube.com/...">
+        <!-- СДЕЛАТЬ АДАПТИВНОСТЬ -->
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Качество
+            </button>
+            <ul class="dropdown-menu">
+                <!-- НАРАЩИВАНИЕ ШАБЛОНИЗАТОРОМ -->
+                <li><a class="dropdown-item" href="#">Action</a></li>
+            </ul>
+        </div>
+        <button type="button" class="btn btn-primary">
+            Скачать
+        </button>
+    </div>
 {% endblock %}
 
