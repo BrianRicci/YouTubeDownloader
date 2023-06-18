@@ -1,3 +1,15 @@
+@media (max-width: 768px) {
+    .auto-width {
+        width: 100%;
+    }
+}
+
+@media (min-width: 769px) {
+    .auto-width {
+        width: 75%;
+    }
+}
+
 .logo {
     height: calc(1.275rem + .3vw)!important;
 }
@@ -37,3 +49,7 @@
 .nav-link:hover::after {
     opacity: 0.6;
 }
+
+.pe-6 {
+    padding-right: 2rem!important;
+  }

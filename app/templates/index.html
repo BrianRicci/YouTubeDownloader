@@ -4,28 +4,6 @@
 YouTube Downloader
 {% endblock %}
 
-{% block body %}
-<div class="container py-4">
-    <h2 class="text-center mb-3">Скачайте видео из YouTube в несколько кликов!</h2>
-    <div class="d-flex gap-1 w-75 mb-3 mx-auto">
-        <input type="text" class="form-control" id="urlInput" placeholder="https://www.youtube.com/...">
-        <!-- СДЕЛАТЬ АДАПТИВНОСТЬ -->
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Качество
-            </button>
-            <ul class="dropdown-menu">
-                <!-- НАРАЩИВАНИЕ ШАБЛОНИЗАТОРОМ -->
-                <li><a class="dropdown-item" href="#">Action</a></li>
-            </ul>
-        </div>
-        <button type="button" class="btn btn-primary">
-            Скачать
-        </button>
-    </div>
-</div>
-{% endblock %}
-
 {% block nav %}
 <ul class="navbar-nav gap-2 ms-auto mb-2 mb-lg-0">
     <li class="nav-item">
@@ -36,3 +14,24 @@ YouTube Downloader
     </li>
   </ul>
 {% endblock %}
+
+{% block body %}
+<div class="container py-4">
+    <h2 class="text-center mb-3">Скачайте видео из YouTube в несколько кликов!</h2>
+    <!-- <div class="d-flex gap-1 w-75 mb-3 mx-auto"> -->
+        <form method="post" class="d-flex gap-1 mb-3 mx-auto auto-width">
+            <input type="text" class="form-control" id="urlInput" placeholder="https://www.youtube.com/...">
+            <!-- <select class="form-select btn btn-secondary w-auto pe-6">
+                <option selected>Качество</option>
+                <option value="1">1080p</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select> -->
+            <input type="submit" class="btn btn-primary" value="Скачать">
+        </form>
+        <!-- СДЕЛАТЬ АДАПТИВНОСТЬ -->
+    <!-- </div> -->
+</div>
+{% endblock %}
+
+
