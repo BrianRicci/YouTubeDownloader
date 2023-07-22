@@ -17,8 +17,8 @@ def main_page():
 
 @app.route('/<video_code>')
 def download_page(video_code):
-    
-    return render_template('download.html')
+    full_url = f'https://youtu.be/{video_code}'
+    return render_template('download.html', full_url=full_url)
 
 
 @app.route('/about')
