@@ -1,0 +1,35 @@
+@media (max-width: 768px) {
+    .auto-width {
+        width: 100%;
+    }
+}
+
+@media (min-width: 769px) {
+    .auto-width {
+        width: 75%;
+    }
+}
+
+@font-face {
+    font-family: 'Montserrat', sans-serif;
+    src: url(../fonts/Montserrat-Regular.ttf);
+}
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.pe-6 {
+    padding-right: 2rem!important;
+  }
+
+.btn-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%!important;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 16px;
+}

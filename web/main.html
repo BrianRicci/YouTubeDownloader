@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+    <title>YouTube Downloader</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="/eel.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link rel="icon" href="img/favicon.svg">
+
+</head>
+<body>
+    
+    <div class="container py-3">
+        
+        <div class="d-flex justify-content-between border-bottom">
+            <span class="py-1 fs-3">YouTube Downloader</span>
+            <button id="path" type="button" class="btn btn-primary btn-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+                    <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"/>
+                </svg>
+            </button>
+        </div>
+
+        <h2 class="text-center my-3 ">Скачайте видео из YouTube в несколько кликов!</h2>
+        <div class="d-flex gap-1 mb-3 mx-auto auto-width">
+            <form class="input-group">
+                <input type="url" class="form-control" name="urlInput" id="urlInput" placeholder="https://www.youtube.com/...">
+                <input type="reset" class="input-group-text" id="basic-addon2" value="✕">
+            </form>
+            <button id="get_info" class="btn btn-primary" onclick="showDiv()">Скачать</button>
+        </div>
+
+        <div id="info" class="container border rounded border-dark" style="display: none;">
+            <img class="mw-100 mh-100 py-2" id="preview" alt="Превью">
+            <h3 id="title"></h3>
+            
+
+            <select id="resolutions" class="form-select my-4 w-50" aria-label="Default select example">
+                <option selected>Выберите качество</option>
+            </select>
+
+
+            <button id="download" class="btn btn-success w-100 mb-2">Скачать</button>
+        </div>
+        
+    </div>
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        async function video_info() {
+            const URL = document.getElementById('urlInput').value;
+
+            const video_info = await eel.getInfo(URL)();
+            const title = video_info['title'];
+            const img_url = video_info['preview'];
+            const sizes = video_info['sizes'];
+            const resolutions = video_info['resolutions'];
+
+            document.getElementById('title').innerHTML = title;
+
+            let img = document.getElementById('preview');
+            img.setAttribute('src', img_url);
+
+
+            // for (let i=0; i < resolutions.length; ++i) {
+            //     console.log(resolutions[i]);
+            // }
+
+            create_resolutions(resolutions, sizes);
+        }
+        
+
+        async function download_video() {
+            const URL = document.getElementById('urlInput').value;
+            let select_value = document.getElementById('resolutions').value;
+            let path = document.getElementById('path').value;
+            eel.downloader(URL, select_value);
+            alert('Ожидайте окончания загрузки видео.')
+        }
+
+
+        async function create_resolutions(resolutions, sizes) {
+            select = document.getElementById('resolutions');
+            for (let i = 0; i < resolutions.length; ++i) {
+                let option = document.createElement('option');
+                option.value = i;
+                option.innerHTML = resolutions[i] + ' — ' + sizes[i] + ' Mb';
+                select.appendChild(option);
+            }
+        }
+
+
+        async function showDiv() {
+            document.getElementById('info').style.display = "block";
+        }
+
+        async function open_path() {
+            eel.open_folder();
+        }
+
+
+        $('#path').click(function() {
+            open_path();
+        });
+
+        $('#get_info').click(function() {
+            video_info();
+        });
+
+        $('#download').click(function() {
+            download_video();
+        });
+
+
+    </script>
+
+</body>
+</html>
